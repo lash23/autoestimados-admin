@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { environment } from '../../../environments/environment';
 import { EstimationsService } from '../../services/estimations.service';
 import { CreateEstimateModaleComponent } from '../../shared/create-estimate-modale/create-estimate-modale.component';
 
@@ -12,6 +13,7 @@ export class EstimatesPage implements OnInit {
 
   estimations: any[] = [];
   estimationsShowed: any[] = [];
+  IMG_URL = environment.IMG_URL + '/';
   constructor(
     private estimationService: EstimationsService,
     public modalController: ModalController
