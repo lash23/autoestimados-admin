@@ -7,6 +7,7 @@ import { LightboxComponent } from './lightbox/lightbox.component';
 import { CreateEstimateModaleComponent } from './create-estimate-modale/create-estimate-modale.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { IonicModule } from '@ionic/angular';
 
 
 
@@ -22,7 +23,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    IonicModule
   ],
   exports: [
     HeaderComponent,

@@ -72,4 +72,9 @@ export class CreateEstimateModaleComponent implements OnInit {
     });
     toast.present();
   }
+
+  onDropzoneRemove(file) {
+    console.log('remove', file);
+    
+  }
 }
