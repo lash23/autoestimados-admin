@@ -1,0 +1,65 @@
+<ion-content [fullscreen]="true">
+  <ion-button (click)="goToCreate()">
+    <ion-icon slot="start" name="add-circle"></ion-icon>
+    Crear estimado
+  </ion-button>
+  <ion-searchbar
+    placeholder="Buscar"
+    inputmode="decimal"
+    type="decimal"
+    color="medium"
+    (ionChange)="search($event)" 
+  ></ion-searchbar>
+
+  <ion-card *ngIf="estimations.length === 0">
+    <ion-card-header>
+      <ion-card-title color="medium">
+        <h1 class="ion-text-center">
+          <ion-icon slot="start" name="warning-outline" color="warning" size="lg"></ion-icon>
+          <span>Parece que aun no hay datos para mostrar</span>
+        </h1>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngFor="let estimation of estimationsShowed">
+    <ion-card-header>
+      <ion-card-title>{{ estimation.name }}</ion-card-title>
+      <ion-card-subtitle>
+        <ion-chip *ngIf="estimation.status" color="secondary">
+          <ion-label>Enviado</ion-label>
+        </ion-chip>
+        <ion-chip *ngIf="!estimation.status" color="warning">
+          <ion-label>Pendiente</ion-label>
+        </ion-chip>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="9">
+            {{ estimation.make }} {{ estimation.model }} {{ estimation.year }} .
+            {{ estimation.email }} . {{ estimation.phone }}
+            <!-- <ion-button color="tertiary">Tertiary</ion-button> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    <img
+      [src]="'http://localhost:3000/'+estimation.images[0]"
+      alt=""
+    />
+    <ion-button shape="round" class="details-button" [routerLink]="['/estimate-detail/', estimation.id]">
+      Click para ver detalles
+    </ion-button>
+  </ion-card>
+
+  <div class="pagination" *ngIf="false">
+    <ion-button> < </ion-button>
+    <ion-button> 1 </ion-button>
+    <ion-button> 2 </ion-button>
+    <ion-button> 3 </ion-button>
+    <ion-button> > </ion-button>
+  </div>
+</ion-content>

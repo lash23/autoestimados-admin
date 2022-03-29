@@ -1,0 +1,154 @@
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <!-- THUMBNAIL -->
+      <ion-col size="4">
+        <ion-card>
+          <ion-card-content>
+            <img [src]="IMG_URL + estimate?.images[0]" />
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <!-- SUMARY DETAILS -->
+      <ion-col size="8">
+        <ion-row>
+          <ion-col size="6">
+            <ion-row>
+              <!-- CONTACT -->
+              <ion-col size="12">
+                <ion-card>
+                  <ion-card-content>
+                    <h1>{{ estimate?.name }}</h1>
+                    <h3>{{ estimate?.phone }} | {{ estimate?.email }}</h3>
+                    <a href="https://api.whatsapp.com/send?phone=1{{estimate?.phone}}" target="_blank">
+                      <ion-icon
+                      name="logo-whatsapp"
+                      color="success"
+                      size="large"
+                      class="ion-margin-top"
+                    ></ion-icon>
+                    </a>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+              <!-- MODEL -->
+              <ion-col size="12">
+                <ion-card>
+                  <ion-card-content>
+                    <h3>
+                      <ion-chip color="primary" mode="android">
+                        <ion-label>{{ estimate?.make }}</ion-label>
+                      </ion-chip>
+                      <ion-chip color="primary" mode="android">
+                        <ion-label>{{ estimate?.model }}</ion-label>
+                      </ion-chip>
+                      <ion-chip color="primary" mode="android">
+                        <ion-label>{{ estimate?.year }}</ion-label>
+                      </ion-chip>
+                    </h3>
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col size="6">
+            <ion-card
+              *ngIf="!estimate?.status"
+              class="status-action-card"
+            >
+              <ion-card-content>
+                <h3>Aun no se ha realizado esta estimacion</h3>
+                <br />
+                <ion-button
+                  expand="block"
+                  shape="round"
+                  (click)="presentModal()"
+                >
+                  Estimar
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+
+            <ion-card
+              *ngIf="estimate?.status == true"
+              class="status-action-card"
+            >
+              <ion-card-content>
+                <h1>
+                  Presupuesto
+                  <ion-chip color="success">
+                    <ion-label>
+                      <h1>$ {{ estimate?.budget }}</h1>
+                    </ion-label>
+                  </ion-chip>
+                </h1>
+                <br />
+                <ion-button
+                  expand="block"
+                  shape="round"
+                  (click)="presentNotesModal()"
+                >
+                  Ver Notas
+                </ion-button>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <!-- MORE DETAILS -->
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-content>
+            Detalles sobre el estado del vehiculo Detalles sobre el estado del
+            vehiculo Detalles sobre el estado del vehiculo Detalles sobre el
+            estado del vehiculo
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <!-- CAROUSEL -->
+      <ion-col
+        size="12"
+        class="ion-text-center ion-margin-top ion-margin-bottom"
+      >
+        <h2>Imagenes del vehiculo</h2>
+      </ion-col>
+      <ion-col size="1">
+        <span
+          class="slider-nav arrow-prev"
+          (click)="slidePrev(sliderTwo,slideWithNav2)"
+        >
+          <div
+            class="prev-icon-custom custon-nav"
+            [class.disabled]="sliderTwo.isBeginningSlide"
+          ></div>
+        </span>
+      </ion-col>
+      <ion-col size="10">
+        <ion-slides
+          pager="false"
+          [options]="slideOptsTwo"
+          #slideWithNav2
+          (ionSlideDidChange)="SlideDidChange(sliderTwo,slideWithNav2)"
+        >
+          <ion-slide *ngFor="let item of sliderTwo.slidesItems">
+            <img (click)="presentLightboxModal(item)" [src]="item" />
+          </ion-slide>
+        </ion-slides>
+      </ion-col>
+      <ion-col size="1">
+        <span
+          class="slider-nav arrow-next"
+          (click)="slideNext(sliderTwo,slideWithNav2)"
+        >
+          <div
+            class="next-icon-custom custon-nav"
+            [class.disabled]="sliderTwo.isEndSlide"
+          ></div>
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

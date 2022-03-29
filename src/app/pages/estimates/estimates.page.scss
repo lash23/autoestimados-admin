@@ -1,0 +1,36 @@
+img {
+  bottom: 0;
+  height: 100%;
+  max-width: 225px;
+  position: absolute;
+  right: 0;
+  object-fit: cover;
+}
+
+ion-button {
+  float: right;
+}
+
+.details-button {
+  display: none;
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 125px);
+  width: 250px;
+  height: 40px;
+}
+
+ion-card:hover {
+  .details-button {
+    display: block !important;
+  }
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  margin: 25px 0;
+}

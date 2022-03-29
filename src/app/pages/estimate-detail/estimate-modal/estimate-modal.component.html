@@ -1,0 +1,16 @@
+<div class="estimate-form">
+  <h3>Estimación para</h3>
+  <form [formGroup]="budgetForm" (ngSubmit)="createBudget()">
+      <ion-item>
+        <ion-label>Presupuesto: $</ion-label>
+        <ion-input formControlName="budget" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Agregar nota (opcional):</ion-label>
+        <ion-textarea formControlName="notes" rows="6" cols="20"></ion-textarea>
+      </ion-item>
+      <ion-button type="submit" [disabled]="budgetForm.invalid">
+        Guardar
+      </ion-button>
+  </form>
+</div>

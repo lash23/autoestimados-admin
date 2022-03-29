@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { GlobalService } from './services/global.service';
+import { Component, OnInit } from '@angular/core';
+
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.scss'],
 })
-export class AppComponent {
+export class SidebarComponent implements OnInit {
   public appPages = [
-    { title: 'Estimaciones', url: '/estimates', icon: 'mail' },
+    { title: 'Estimaciones', url: '/folder/estimates', icon: 'mail' },
     // { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
     // { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
     // { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
@@ -16,12 +16,8 @@ export class AppComponent {
   ];
 
   // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor(
-    public globalService: GlobalService
-  ) {
-    const isLogged = localStorage.getItem('logged');
-    if (isLogged) {
-      globalService.login();
-    }
-  }
+  constructor() { }
+
+  ngOnInit() {}
+
 }
